@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <title>Apartment Registration</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <h3>{{message}}</h3>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="row vh-100 border justify-content-center align-content-center">
+            <div class="col-6">
+
+                <form action="/registered" method="POST">
+                    <label for="fname" class="form-label">First Name</label>
+                    <input type="text" class="form-control mb-2" name="fname">
+
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control mb-2" name="lname">
+
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control mb-2" name="email">
+                        
+                    <!-- VALIDIATE PASSWORD -->
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control mb-2" name="password">
+                        
+                    <label for="confirm" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control mb-2" name="confirm">
+
+                    <input type="hidden" name="usertype" value="landlord">
+                    <!-- <p>Are you a tenant or landlord?</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="usertype" id="exampleRadios1" value="tenant" checked>
+                        <label class="form-check-label" for="usertype">
+                        tenant
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="usertype" id="exampleRadios1" value="landlord">
+                        <label class="form-check-label" for="usertype">
+                        landlord
+                        </label>
+                    </div> -->
+
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary" type="submit">Register</button>
+                    </div>
+                    <div class="text-center">
+                        <a href="/" class="text-muted">Already a Member?</a>
+                    </div>
+                        
+                    
+
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
